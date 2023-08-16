@@ -4,9 +4,9 @@ data() {
     return {
       item: [
         { id: 1, name: 'Apple Watch', color: 'Gold', category: 'Shiny Watch', price: '$2499' },
-        { id: 2, name: 'Apple Watch', color: 'Gold', category: 'Shiny Watch', price: '$2499' },
-        { id: 3, name: 'Apple Watch', color: 'Gold', category: 'Shiny Watch', price: '$2499' },
-        { id: 4, name: 'Apple Watch', color: 'Gold', category: 'Shiny Watch', price: '$2499' },
+        { id: 2, name: 'Apple Car', color: 'Red', category: 'Shiny Car', price: '$9000' },
+        { id: 3, name: 'Apple Phone', color: 'Silver', category: 'Shiny Phone', price: '$5499' },
+        { id: 4, name: 'Apple TV', color: 'Platinum', category: 'Shiny TV', price: '$1499' },
         // Add more items as needed
       ],
       showModal: false,
