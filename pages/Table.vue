@@ -9,10 +9,9 @@ data() {
         { id: 4, name: 'Apple TV', color: 'Platinum', category: 'Shiny TV', price: '$1499' },
         // Add more items as needed
       ],
-      showModal: false,
-      selectedItem: {}
-    };
-  }
+    items: {}, // Initialize as null
+        }
+    }
 }
 </script>
 
@@ -41,13 +40,12 @@ data() {
                         Price
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        <span class="sr-only">Edit</span>
-                        <span class="sr-only">Delete</span>
+                        Actions
                     </th>
                 </tr>
             </thead>
-            <tbody v-for="items in item" :key="items.id">
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+            <tbody>
+                <tr v-for="items in item" :key="items.id" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" hidden>
                         {{ items.id }}
                     </th>
@@ -63,13 +61,25 @@ data() {
                     <td class="px-6 py-4">
                         {{ items.price }}
                     </td>
-                    <td class="px-6 py-4 text-right">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                    <td class="px-6 py-4">
+      
+                    <button @click="(items.id, 'view-modal')" data-modal-target="view-modal" data-modal-toggle="view-modal" class="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700" type="button">
+                        View
+                    </button>
+                    <button @click="(items.id, 'edit-modal')"  data-modal-target="edit-modal" data-modal-toggle="edit-modal" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">
+                        Edit
+                    </button>
+                    <button @click="(items.id, 'delete-modal')"  data-modal-target="delete-modal" data-modal-toggle="delete-modal" class="text-white bg-red-700 hover:bg-red-800 focus:outline-none focus:ring-4 focus:ring-red-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" type="button">
+                        Delete
+                    </button>
+                       
                     </td>
                 </tr>
             </tbody>
         </table>
-        <Modal />
+        <View_Modal :item="item" />
+        <Edit_Modal />
+        <Delete_Modal />
     </div>
 
 </template>
